@@ -6,7 +6,6 @@
 #include "ServiceBrowser.h"
 #include "ServiceBrowserDlg.h"
 #include "afxdialogex.h"
-#include "BonjourService.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -102,7 +101,6 @@ BOOL CServiceBrowserDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
-	PublishService();
 	StartBrowser();
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -155,21 +153,6 @@ HCURSOR CServiceBrowserDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
-
-void CServiceBrowserDlg::PublishService()
-{
-	HeapSetInformation(NULL, HeapEnableTerminationOnCorruption, NULL, 0);
-	DNSServiceErrorType err = BonjourService::Start();
-	if (err == 0) {
-		m_Text.SetWindowText(_T("Registered service"));
-	}
-	else {
-		CString msg;
-		msg.Format(_T("Error registering service: %d"), err);
-		AfxMessageBox(msg);
-	}
-}
-
 
 void CServiceBrowserDlg::StartBrowser()
 {

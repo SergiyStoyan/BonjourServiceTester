@@ -44,7 +44,6 @@ public:
     std::unordered_map<DNSServiceRef,HTREEITEM> m_TreeInsertionMap;
     std::unordered_set<std::string> m_ServiceTypes;
     std::unordered_set<std::string> m_ServiceInstances;
-	void PublishService();
 	//
 	// DNS-SD browser items
 	//
