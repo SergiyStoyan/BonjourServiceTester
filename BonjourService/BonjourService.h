@@ -10,9 +10,9 @@ public:
 	//BonjourService();
 	//~BonjourService();
 
-	static DNSServiceRef Client;
+	static DNSServiceRef Service;
 
-	static DNSServiceErrorType Start();
+	static DNSServiceErrorType Start(const char *service_name, DNSServiceRegisterReply callBack);
 	static void Stop();
 	
 	static void DNSSD_API BonjourService::ServiceRegisterReply(
